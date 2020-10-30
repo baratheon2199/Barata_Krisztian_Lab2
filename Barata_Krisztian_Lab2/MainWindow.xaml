@@ -42,12 +42,18 @@
             <ComboBox x:Name="cmb_Type" Canvas.Left="152" Canvas.Top="51" Width="167"/>
         </Canvas>
 
-        <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="130">
+        <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="131">
             <MenuItem Header="File">
                 <MenuItem Header="Exit"/>
             </MenuItem>
-            <MenuItem Header="Doughnuts">
-                <MenuItem Header="Make"/>
+            <MenuItem Header="_Doughnuts">
+                <MenuItem Header="Make">
+                    <MenuItem Header="Raised">
+                        <MenuItem x:Name="glazedMenuItem" Header="Glazed"/>
+                        <MenuItem x:Name="sugarMenuItem" Header="Sugar"/>
+                    </MenuItem>
+                    <MenuItem Header="Filled"/>
+                </MenuItem>
             </MenuItem>
         </Menu>
     </Grid>
