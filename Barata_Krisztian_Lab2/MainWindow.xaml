@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Barata_Krisztian_Lab2"
         mc:Ignorable="d"
         Title="Virtual Doughnuts Factory" Height="450" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
-    <Grid>
+    <Grid MenuItem.Click="FilledItemsShow_Click">
+     
         <Label x:Name="lblTitle" Content="Doughnuts - Bake &amp; Sale" HorizontalAlignment="Left" Height="46" Margin="239,10,0,0" VerticalAlignment="Top" Width="298" FontSize="24" FontWeight="Bold"/>
         <GroupBox x:Name="GbRaised" Header="Raised" HorizontalAlignment="Left" Height="116" Margin="95,61,0,0" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.517,0.445" FontWeight="Bold">
             <Canvas x:Name="Canvas_Raised" HorizontalAlignment="Left" Height="98" Margin="0,0,0,-4.4" VerticalAlignment="Bottom" Width="188">
@@ -22,8 +23,8 @@
                 <Label x:Name="lblChocolateFilled" Content="Chocolate" Canvas.Left="10" Canvas.Top="32" FontWeight="Normal"/>
                 <Label x:Name="lblVanillaFilled" Content="Vanilla&#xD;&#xA;" Canvas.Left="10" Canvas.Top="62" FontWeight="Normal"/>
                 <TextBox x:Name="txtLemonFilled" Height="23" Canvas.Left="129" TextWrapping="Wrap" Text="0" Canvas.Top="1" Width="53" IsReadOnly="True" FontWeight="Normal"/>
-                <TextBox x:Name="TxtChocolateFilled" Height="23" TextWrapping="Wrap" Text="0" Width="53" Canvas.Left="129" Canvas.Top="29" IsReadOnly="True" FontWeight="Normal"/>
-                <TextBox x:Name="TxtVanillaFilled" Height="23" Canvas.Left="129" TextWrapping="Wrap" Text="0" Canvas.Top="62" Width="53" TextChanged="txtVanillaFilled_TextChanged" IsReadOnly="True" FontWeight="Normal"/>
+                <TextBox x:Name="txtChocolateFilled" Height="23" TextWrapping="Wrap" Text="0" Width="53" Canvas.Left="129" Canvas.Top="29" IsReadOnly="True" FontWeight="Normal"/>
+                <TextBox x:Name="txtVanillaFilled" Height="23" Canvas.Left="129" TextWrapping="Wrap" Text="0" Canvas.Top="62" Width="53" TextChanged="txtVanillaFilled_TextChanged" IsReadOnly="True" FontWeight="Normal"/>
             </Canvas>
         </GroupBox>
         <GroupBox x:Name="gb_Current_Sale" Header="Current Sale" HorizontalAlignment="Left" Height="228" Margin="95,182,0,0" VerticalAlignment="Top" Width="588" FontWeight="Bold"/>
@@ -32,28 +33,45 @@
             <Label x:Name="lbl_Price_Current_Sale" Content="Price" Canvas.Left="324" Canvas.Top="46" RenderTransformOrigin="1.031,0.539"/>
             <Label x:Name="lbl_Type_Current_Sale" Content="Type" Canvas.Left="112" Canvas.Top="47"/>
             <Label x:Name="lbl_Total_Current_Sale" Content="Total" Canvas.Left="324" Canvas.Top="178" Width="44" FontWeight="Bold" RenderTransformOrigin="-0.126,0.5"/>
-            <TextBox x:Name="txt_Quantity_Current_Sale" Height="23" Canvas.Left="71" TextWrapping="Wrap" Text="0" Canvas.Top="51" Width="36"/>
-            <TextBox x:Name="txt_Price_Current_Sale" Height="23" Canvas.Left="359" TextWrapping="Wrap" Text="0" Canvas.Top="51" Width="89" RenderTransformOrigin="0.43,0.104" TextChanged="txt_Price_Current_Sale_TextChanged" IsReadOnly="True"/>
+            <TextBox x:Name="txt_Quantity" Height="23" Canvas.Left="71" TextWrapping="Wrap" Text="0" Canvas.Top="51" Width="36"/>
+            <TextBox x:Name="txt_Price" Height="23" Canvas.Left="359" TextWrapping="Wrap" Text="0" Canvas.Top="51" Width="89" RenderTransformOrigin="0.43,0.104" TextChanged="txt_Price_Current_Sale_TextChanged" IsReadOnly="True"/>
             <ListBox x:Name="IstSale" Height="94" Canvas.Left="10" Canvas.Top="79" Width="438" SelectionChanged="ListBox_SelectionChanged"/>
-            <TextBox x:Name="txt_Total_Current_Sale" Height="22" Canvas.Left="359" TextWrapping="Wrap" Text="0" Canvas.Top="181" Width="89" IsReadOnly="True"/>
+            <TextBox x:Name="txt_Total" Height="22" Canvas.Left="359" TextWrapping="Wrap" Text="0" Canvas.Top="181" Width="89" IsReadOnly="True"/>
             <Button x:Name="btn_Remove_Item_Current_Sale" Content="Remove Item" Canvas.Left="485" Canvas.Top="130" Width="75"/>
             <Button x:Name="btn_Checkout_Current_Sale" Content="Checkout" Canvas.Left="485" Canvas.Top="184" Width="75" FontWeight="Bold"/>
-            <Button x:Name="btn_Add_To_Sale_Current_Sale" Content="Add To Sale" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.379,0.125" Canvas.Left="485" Canvas.Top="97"/>
-            <ComboBox x:Name="cmb_Type" Canvas.Left="152" Canvas.Top="51" Width="167"/>
+            <Button x:Name="btnAddToSale" Content="Add To Sale" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.379,0.125" Canvas.Left="485" Canvas.Top="97"/>
+            <ComboBox x:Name="cmbType" Canvas.Left="152" Canvas.Top="51" Width="167"/>
         </Canvas>
 
         <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="131">
-            <MenuItem Header="File">
-                <MenuItem Header="Exit"/>
+            <MenuItem Header="File" Click="MenuItem_Click">
+
+                <MenuItem Header="Exit" Click="MenuItem_Click_1"/>
+
+
             </MenuItem>
-            <MenuItem Header="_Doughnuts">
+            <MenuItem Header="_Doughnuts" Click="MenuItem_Click">
+                
                 <MenuItem Header="Make">
+                    
                     <MenuItem Header="Raised">
-                        <MenuItem x:Name="glazedMenuItem" Header="Glazed"/>
-                        <MenuItem x:Name="sugarMenuItem" Header="Sugar"/>
+                        <MenuItem x:Name="glazedMenuItem" Header="Glazed" Click="glazedMenuItem_Click"/>
+                        <MenuItem x:Name="sugarMenuItem" Header="Sugar" Click="sugarMenuItem_Click"/>
                     </MenuItem>
-                    <MenuItem Header="Filled"/>
+                   
+                    <MenuItem Header="Filled">
+                        <MenuItem x:Name="lemonMenuItem" Header="Lemon" Click="lemonMenuItem_Click"/>
+                        <MenuItem x:Name="chocolateMenuItem" Header="Chocolate" Click="chocolateMenuItem_Click"/>
+                        <MenuItem x:Name="vanillaMenuItem" Header="Vanilla" Click="vanillaMenuItem_Click"/>
+
+                    </MenuItem>
+            
+                
                 </MenuItem>
+                <Button Content="Stop"/>
+
+
+
             </MenuItem>
         </Menu>
     </Grid>
